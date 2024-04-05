@@ -42,7 +42,7 @@ wp option update admin_email 'cristina@pixelinlove.net'
 echo "Correo electrónico del administrador cambiado"
 
 #eliminar widgets del dashboard menos el de salud del sitio
-wp eval-file path/to/remove_dashboard_widgets.php
+wp eval-file /tmp/remove_dashboard_widgets.php
 echo "Widgets del dashboard eliminados"
 
 #disuadir motores de búsqueda
@@ -95,6 +95,10 @@ wp plugin install cookie-law-info sg-security wordpress-seo
 #instalar y activar el plugin all-in-one-wp-migration-dropbox-extension
 wp plugin install $HOME/wp-cli-files/all-in-one-wp-migration-dropbox-extension.zip --activate
 
+#esperar 10 segundos para que se activen los plugins
+sleep 10
+#mostrar una cuenta atrás de 10 segundos
+for i in {10..1}; do echo $i; sleep 1; done
 #actualizar todos los plugins
 wp plugin update --all
 echo "Plugins instalados y activados"
@@ -112,16 +116,17 @@ wp theme activate divi-child
 echo "Tema hijo de Divi creado"
 
 #borra todos los usuarios por defecto
-wp user delete $(wp user list --role=administrator --field=ID --format=ids)
-wp user delete $(wp user list --role=editor --field=ID --format=ids)
-wp user delete $(wp user list --role=author --field=ID --format=ids)
-wp user delete $(wp user list --role=contributor --field=ID --format=ids)
-wp user delete $(wp user list --role=subscriber --field=ID --format=ids)
+wp user delete $(wp user list --role=administrator --field=ID --format=ids) --reassign=1
+wp user delete $(wp user list --role=editor --field=ID --format=ids) --yes
+wp user delete $(wp user list --role=author --field=ID --format=ids) --yes
+wp user delete $(wp user list --role=contributor --field=ID --format=ids) --yes
+wp user delete $(wp user list --role=subscriber --field=ID --format=ids) --yes
 echo "Usuarios por defecto eliminados"
 
 #crear un usuario administrador
 wp user create admin cristina@pixelinlove.net --user_pass=admin
 wp user add-role admin administrator
+wp user remove-role admin subscriber
 echo "Usuario administrador creado"
 
 echo "Configuración de primeros pasos completada"
