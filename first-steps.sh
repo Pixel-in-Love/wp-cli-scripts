@@ -11,5 +11,6 @@ if [ ! -d "$site_folder" ]; then
 fi
 
 cd "$site_folder"
+cd "public_html"
 
 wp option get siteurl
