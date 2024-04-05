@@ -111,10 +111,6 @@ echo "Tema hijo de Divi creado"
 
 #borra todos los usuarios por defecto
 wp user delete $(wp user list --role=administrator --field=ID --format=ids) --reassign=1
-wp user delete $(wp user list --role=editor --field=ID --format=ids) --yes
-wp user delete $(wp user list --role=author --field=ID --format=ids) --yes
-wp user delete $(wp user list --role=contributor --field=ID --format=ids) --yes
-wp user delete $(wp user list --role=subscriber --field=ID --format=ids) --yes
 echo "Usuarios por defecto eliminados"
 
 #crear un usuario administrador
