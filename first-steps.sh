@@ -110,3 +110,26 @@ wp scaffold child-theme divi-child --parent_theme=divi --theme_name="Divi Child"
 wp theme activate divi-child
 echo "Tema hijo de Divi creado"
 
+#borra todos los widgets por defecto
+wp widget reset --all
+echo "Widgets por defecto eliminados"
+
+#borra todos los menús por defecto
+wp menu reset --all
+echo "Menús por defecto eliminados"
+
+#borra todos los usuarios por defecto
+wp user delete $(wp user list --role=administrator --field=ID --format=ids)
+wp user delete $(wp user list --role=editor --field=ID --format=ids)
+wp user delete $(wp user list --role=author --field=ID --format=ids)
+wp user delete $(wp user list --role=contributor --field=ID --format=ids)
+wp user delete $(wp user list --role=subscriber --field=ID --format=ids)
+echo "Usuarios por defecto eliminados"
+
+#crear un usuario administrador
+wp user create admin
+wp user update admin --user_pass=admin
+wp user add-role admin administrator
+echo "Usuario administrador creado"
+
+echo "Configuración de primeros pasos completada"
