@@ -10,7 +10,6 @@ if [ ! -d "$site_folder" ]; then
   exit 1
 fi
 
-cd "$site_folder"
-cd "public_html"
+cd "$site_folder/public_html"
 
 wp option get siteurl
