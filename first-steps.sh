@@ -11,3 +11,5 @@ if [ ! -d "$site_folder" ]; then
 fi
 
 cd "$site_folder"
+
+wp option get siteurl
