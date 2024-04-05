@@ -127,8 +127,7 @@ wp user delete $(wp user list --role=subscriber --field=ID --format=ids)
 echo "Usuarios por defecto eliminados"
 
 #crear un usuario administrador
-wp user create admin
-wp user update admin --user_pass=admin
+wp user create admin cristina@pixelinlove.net --user_pass=admin
 wp user add-role admin administrator
 echo "Usuario administrador creado"
 
