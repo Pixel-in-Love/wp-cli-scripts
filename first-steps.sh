@@ -101,11 +101,11 @@ echo "Plugins instalados y activados"
 #instalar el tema Divi cuyo archivo zip está en la misma carpeta que este script
 wp theme install $HOME/wp-cli-files/divi.zip
 #activar el tema Divi
-wp theme activate divi
+wp theme activate Divi
 echo "Tema Divi instalado y activado"
 
 #crea un tema hijo de Divi
-wp scaffold child-theme divi-child --parent_theme=divi --theme_name="Divi Child"
+wp scaffold child-theme divi-child --parent_theme=Divi --theme_name="Divi Child"
 #activa el tema hijo de Divi
 wp theme activate divi-child
 echo "Tema hijo de Divi creado"
