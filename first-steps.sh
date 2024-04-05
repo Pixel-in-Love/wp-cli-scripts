@@ -94,13 +94,7 @@ wp plugin install duplicate-page all-in-one-wp-migration svg-support wp-mail-log
 wp plugin install cookie-law-info sg-security wordpress-seo
 #instalar y activar el plugin all-in-one-wp-migration-dropbox-extension
 wp plugin install $HOME/wp-cli-files/all-in-one-wp-migration-dropbox-extension.zip --activate
-
-#esperar 10 segundos para que se activen los plugins
-sleep 10
-#mostrar una cuenta atrás de 10 segundos
-for i in {10..1}; do echo $i; sleep 1; done
-#actualizar todos los plugins
-wp plugin update --all
+wp plugin update all-in-one-wp-migration-dropbox-extension
 echo "Plugins instalados y activados"
 
 #instalar el tema Divi cuyo archivo zip está en la misma carpeta que este script
