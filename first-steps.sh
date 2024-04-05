@@ -79,12 +79,13 @@ wp option update page_on_front $(wp post list --post_type=page --post_status=pub
 echo "Página de inicio creada"
 
 #borra todos los plugins por defecto
-wp plugin deactivate $(wp plugin list --status=active --field=name --format=ids)
-wp plugin delete $(wp plugin list --status=inactive --field=name --format=ids)
+wp plugin deactivate --all
+wp plugin delete --all
 echo "Plugins por defecto eliminados"
 
-#borra todos los temas menos uno (el que sea activo)
-wp theme delete $(wp theme list --status=inactive --field=name --format=ids)
+#borra todos los temas por defecto menos el tema activo
+active_theme=$(wp theme list --status=active --field=name)
+wp theme list --status=inactive --field=name | grep -v "$active_theme" | xargs wp theme delete
 echo "Temas por defecto eliminados"
 
 #instalar y activar plugins: duplicate-page, all-in-one-migration, svg-support, wp-mail-logging
@@ -109,14 +110,6 @@ wp scaffold child-theme divi-child --parent_theme=Divi --theme_name="Divi Child"
 #activa el tema hijo de Divi
 wp theme activate divi-child
 echo "Tema hijo de Divi creado"
-
-#borra todos los widgets por defecto
-wp widget reset --all
-echo "Widgets por defecto eliminados"
-
-#borra todos los menús por defecto
-wp menu reset --all
-echo "Menús por defecto eliminados"
 
 #borra todos los usuarios por defecto
 wp user delete $(wp user list --role=administrator --field=ID --format=ids)
