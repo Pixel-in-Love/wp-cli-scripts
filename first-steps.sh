@@ -41,10 +41,6 @@ echo "Comentarios desactivados"
 wp option update admin_email 'cristina@pixelinlove.net'
 echo "Correo electrónico del administrador cambiado"
 
-#eliminar widgets del dashboard menos el de salud del sitio
-wp eval-file /tmp/remove_dashboard_widgets.php
-echo "Widgets del dashboard eliminados"
-
 #disuadir motores de búsqueda
 wp option update blog_public 0
 echo "Motores de búsqueda disuadidos"
