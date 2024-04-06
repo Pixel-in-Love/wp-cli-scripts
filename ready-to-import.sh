@@ -50,7 +50,7 @@ wp theme list --status=inactive --field=name | grep -v "$active_theme" | xargs w
 echo "Temas por defecto eliminados"
 
 #instalar y activar plugin all-in-one-migration
-wp plugin install all-in-one-wp-migration
+wp plugin install all-in-one-wp-migration --activate
 #instalar y activar el plugin all-in-one-wp-migration-dropbox-extension
 wp plugin install $HOME/wp-cli-files/all-in-one-wp-migration-dropbox-extension.zip --activate
 wp plugin update all-in-one-wp-migration-dropbox-extension
